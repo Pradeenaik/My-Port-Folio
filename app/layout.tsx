@@ -1,3 +1,4 @@
+import MouseAura from '@/components/MouseAura';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -34,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </div>
         </header>
-
+        <MouseAura/>
         {/* Main content */}
         <main className="pt-0 px-4 sm:px-6 min-h-screen">{children}</main>
       </body>
