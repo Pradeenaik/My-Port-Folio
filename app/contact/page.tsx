@@ -41,9 +41,9 @@ const contactItems = [
 
 export default function Contact() {
   return (
-    <section className="space-y-10 animate-fade-in">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white animate-fade-in">
       <motion.h2
-        className="text-3xl font-bold text-black text-center"
+        className="text-3xl sm:text-4xl font-bold text-black text-center mb-6"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -53,7 +53,7 @@ export default function Contact() {
       </motion.h2>
 
       <motion.p
-        className="text-lg text-gray-800 leading-relaxed text-center max-w-2xl mx-auto"
+        className="text-base sm:text-lg text-gray-800 leading-relaxed text-center max-w-3xl mx-auto mb-10"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
@@ -63,7 +63,7 @@ export default function Contact() {
       </motion.p>
 
       <motion.div
-        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -73,15 +73,17 @@ export default function Contact() {
         }}
       >
         {contactItems.map((item, i) => (
-          <motion.div
+          <motion.article
             key={i}
-            className="bg-white rounded-xl border border-gray-200 shadow-md p-4 flex items-start gap-4 hover:shadow-lg transition duration-300"
+            className="bg-white rounded-xl border border-gray-200 shadow-md p-5 flex items-start gap-4 hover:shadow-lg transition duration-300"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <div className="p-2 rounded-full bg-gray-100">{item.icon}</div>
+            <div className="p-3 rounded-full bg-gray-100 group-hover:scale-105 transition-transform duration-300">
+              {item.icon}
+            </div>
             <div className="flex flex-col">
               <span className="font-semibold text-gray-700">{item.label}</span>
               {item.link ? (
@@ -89,20 +91,20 @@ export default function Contact() {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline break-words"
+                  className="text-blue-600 hover:underline break-all text-sm"
                 >
                   {item.value}
                 </a>
               ) : (
-                <span className="text-gray-800">{item.value}</span>
+                <span className="text-gray-800 text-sm">{item.value}</span>
               )}
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </motion.div>
 
       <motion.p
-        className="text-lg text-gray-800 text-center max-w-2xl mx-auto"
+        className="text-base sm:text-lg text-gray-800 text-center max-w-3xl mx-auto mt-10"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
